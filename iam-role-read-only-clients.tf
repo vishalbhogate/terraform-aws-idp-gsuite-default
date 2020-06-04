@@ -20,10 +20,10 @@ data aws_iam_policy_document clients_read_only_assume {
 }
 
 resource aws_iam_role_policy clients_read_only_policy {
-  count = length(var.clients)
-  name  = "clients-assume-idp-read-only-${var.clients[count.index]}"
-  role  = aws_iam_role.clients_read_only[count.index].id
-  policy =  data.aws_iam_policy_document.clients_read_only_assume[count.index].json
+  count  = length(var.clients)
+  name   = "clients-assume-idp-read-only-${var.clients[count.index]}"
+  role   = aws_iam_role.clients_read_only[count.index].id
+  policy = data.aws_iam_policy_document.clients_read_only_assume[count.index].json
 }
 
 
